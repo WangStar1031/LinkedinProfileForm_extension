@@ -1,0 +1,157 @@
+<style type="text/css">
+  .header{
+    height: 50px;
+  }
+  .header img{
+    height: 100%;
+  }
+  .header button{
+    float: right; margin-top: 15px;
+  }
+  .header .sendingWait{
+    float: right;
+  }
+  .contents{
+    width: 500px;
+  }
+  table, input, select, textarea{
+    width: 100%;
+  }
+  .hiddenItem{
+    display: none;
+  }
+  #EmpHistory, #EduHistory{
+    cursor: pointer;
+  }
+  #EmpHistory.hidden:after, #EduHistory.hidden:after{
+    content: '+';
+    float: right;
+  }
+  #EmpHistory.shown:after, #EduHistory.shown:after{
+    content: '-';
+    float: right;
+  }
+  #EmpHistory{
+    /*background-color: gray;*/
+  }
+  .empDiv, .eduDiv{
+    margin-left: 15px;
+  }
+
+</style>
+<div class="contents">
+  <div class="header">
+    <img class="scrappingWait" src="images/Loading_icon.gif">
+    <button>Send</button>
+    <img class="hiddenItem sendingWait" src="images/Loading_icon.gif">
+  </div>
+  <div class="mainProfile">
+    <div>
+      <table class="table_1">
+        <tr>
+          <td class="mandatoryTitle">Prefix</td>
+          <td class="mandatoryTitle">First Name</td>
+          <td class="mandatoryTitle">Last Name</td>
+          <!-- <td>Suffixes</td> -->
+        </tr>
+        <tr class="row_1">
+          <td>
+            <select>
+              <option>Mr.</option>
+              <option>Ms.</option>
+              <option>Dr.</option>
+            </select>
+          </td>
+          <td>
+            <input type="text" name="firstName">
+          </td>
+          <td>
+            <input type="text" name="lastName">
+          </td>
+          <!-- <td>
+            <input type="text" name="suffixes">
+          </td> -->
+        </tr>
+      </table>
+      <table class="table_2">
+        <tr>
+          <td class="mandatoryTitle">Country</td>
+          <td>Email address</td>
+          <td>Mobile Number</td>
+        </tr>
+        <tr class="row_2">
+          <td><input type="text" name="country"></td>
+          <td><input type="text" name="email"></td>
+          <td><input type="text" name="mobileNumber"></td>
+        </tr>
+      </table>
+      <table class="table_3">
+        <tr>
+          <td class="mandatoryTitle">Practice Area</td>
+          <td>Time Zone</td>
+        </tr>
+        <tr class="row_3">
+          <td>
+            <select>
+              <!-- <option selected="true" disabled="disabled">Select a primary practice area</option> -->
+              <option>Healthcare & Biomedical</option>
+              <option>Tech, Media & Telecom</option>
+              <option>Energy & Industrials</option>
+              <option>Legal & Regulatory Affairs</option>
+              <option>Consumer Goods & Services</option>
+              <option>Accounting & Financial Analysis</option>
+              <option>Financial & Business Services</option>
+              <option>Real Estate</option>
+            </select>
+          </td>
+          <td><input type="text" name="timeZone"></td>
+        </tr>
+      </table>
+      <table class="table_4">
+        <tr>
+          <td>Linked in Profile URL</td>
+          <td>Profile Image URL</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="linkedinProfileUrl"></td>
+          <td><input type="text" name="imgProfileUrl"></td>
+        </tr>
+      </table>
+      <div class="professionalSection">
+        <h3>Professional Profile</h3>
+        <table>
+          <tr>
+            <td class="mandatoryTitle">Title</td>
+          </tr>
+          <tr>
+            <td><input type="text" name="title"></td>
+          </tr>
+          <tr>
+            <td>English Biography</td>
+          </tr>
+          <tr>
+            <td><textarea name="englishBiography" rows="2"></textarea></td>
+          </tr>
+        </table>
+      </div>
+      <div class="employmentHistory">
+        <h3 class="hidden" id="EmpHistory">Employment History</h3>
+      </div>
+      <div class="educationHistory">
+        <h3 class="hidden" id="EduHistory">Education History</h3>
+      </div>
+      <div class="skillSets">
+        <div class="mainSkills">
+          
+        </div>
+        <div class="otherSkills">
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="popup.js"></script>
