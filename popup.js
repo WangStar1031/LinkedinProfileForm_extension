@@ -56,6 +56,7 @@ var interval = setInterval(function(){
 			chrome.storage.sync.get('strImgUrl', function(data) {
 				objProfile.strImgUrl = ( data.strImgUrl == '' ? '' : data.strImgUrl.trim());
 				$("input[name=imgProfileUrl]").val(objProfile.strImgUrl);
+				$(".profileImg").attr("src", objProfile.strImgUrl).removeClass("hiddenItem");
 				processed.imgUrl = true;
 			});
 			// headline : title
