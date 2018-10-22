@@ -12,7 +12,7 @@
     float: right;
   }
   .contents{
-    width: 500px;
+    width: 600px;
   }
   table, input, select, textarea{
     width: 100%;
@@ -36,6 +36,10 @@
   }
   .empDiv, .eduDiv{
     margin-left: 15px;
+  }
+  .empDiv p span:nth-child(2), .eduDiv p span:nth-child(2){
+    position: absolute;
+    left: 50%;
   }
 
 </style>
@@ -92,8 +96,19 @@
         </tr>
         <tr class="row_3">
           <td>
-            <select>
-              <!-- <option selected="true" disabled="disabled">Select a primary practice area</option> -->
+            <input list="browsers" name="practiceArea">
+            <datalist id="browsers">
+              <option value="Healthcare & Biomedical">
+              <option value="Tech, Media & Telecom">
+              <option value="Energy & Industrials">
+              <option value="Legal & Regulatory Affairs">
+              <option value="Consumer Goods & Services">
+              <option value="Accounting & Financial Analysis">
+              <option value="Financial & Business Services">
+              <option value="Real Estate">
+              <option value="Industry">
+            </datalist>
+           <!--  <select>
               <option>Healthcare & Biomedical</option>
               <option>Tech, Media & Telecom</option>
               <option>Energy & Industrials</option>
@@ -102,7 +117,7 @@
               <option>Accounting & Financial Analysis</option>
               <option>Financial & Business Services</option>
               <option>Real Estate</option>
-            </select>
+            </select> -->
           </td>
           <td><input type="text" name="timeZone"></td>
         </tr>
@@ -130,7 +145,7 @@
             <td>English Biography</td>
           </tr>
           <tr>
-            <td><textarea name="englishBiography" rows="2"></textarea></td>
+            <td><textarea name="englishBiography" rows="7"></textarea></td>
           </tr>
         </table>
       </div>
@@ -152,6 +167,7 @@
     </div>
   </div>
 </div>
+
 
  <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="popup.js"></script>
