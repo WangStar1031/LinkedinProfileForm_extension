@@ -165,7 +165,7 @@ var interval = setInterval(function(){
 					clearInterval(processedInterval);
 					var strBio = "";
 					var fullName = objProfile.firstName + " " + objProfile.lastName;
-					var prevCount = 0;
+					var prevCount = false;
 					for( var i = 0; i < objProfile.strExperience.length; i++){
 						var curExp = objProfile.strExperience[i];
 						// if( curExp.workingHistory.length == 1){
@@ -175,14 +175,16 @@ var interval = setInterval(function(){
 							if( curWorking.duration.indexOf("Present") != -1){
 								strBio += fullName + " is currently employed at " + curExp.companyName + ", since " + lstDuration[0] + ", holding  the title of " + curWorking.title + ".";
 							} else{
-								prevCount++;
-								if( prevCount % 2 ){
+								prevCount = !prevCount;
+								if( prevCount ){
 									strBio += " Previously, ";
 								} else{
-									strBio + " Before this, ";
+									strBio += " Before this, ";
 								}
+								console.log(prevCount );
+								console.log( strBio);
 								strBio += objProfile.firstName + " held the position of " + curWorking.title + ", while working at " + curExp.companyName + ".";
-								strBio += " " + objProfile.firstName + "held this role for " + convertDuration(lstDuration) + "(" + strDuration + ")."
+								strBio += " " + objProfile.firstName + " held this role for " + convertDuration(lstDuration) + "(" + strDuration + ")."
 							}
 						// } else{
 
