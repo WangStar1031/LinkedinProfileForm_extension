@@ -41,6 +41,9 @@
     position: absolute;
     left: 50%;
   }
+  .mandatoryTitle:after{
+    content: "  *";
+  }
 
 </style>
 <div class="contents">
@@ -92,7 +95,7 @@
       </table>
       <table class="table_3">
         <tr>
-          <td class="mandatoryTitle">Practice Area</td>
+          <td class="mandatoryTitle">Industry</td>
           <!-- <td>Time Zone</td> -->
         </tr>
         <tr class="row_3">
@@ -107,7 +110,9 @@
               <option value="Accounting & Financial Analysis">
               <option value="Financial & Business Services">
               <option value="Real Estate">
-              <option value="Industry">
+              <option value="Education">
+              <option value="Hospitality">
+              <!-- <option value="Industry"> -->
             </datalist>
            <!--  <select>
               <option>Healthcare & Biomedical</option>
@@ -121,6 +126,12 @@
             </select> -->
           </td>
           <!-- <td><input type="text" name="timeZone"></td> -->
+        </tr>
+        <tr>
+          <td>Job Function</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="jobFunction"></td>
         </tr>
       </table>
       <table class="table_4">
