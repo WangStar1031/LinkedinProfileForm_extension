@@ -8,6 +8,14 @@ var objProfile = {};
 var monthName = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var processed = {name:false, location: false, email: false, phone: false, profileUrl: false, imgUrl: false, headline: false, experience: false, education: false};
 var processedInterval = null;
+var lstUSStates = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
+function isUSState( _strCountryName){
+	for( var i = 0; i < lstUSStates.length; i++){
+		if( _strCountryName.indexOf(lstUSStates[i]) != -1)
+			return true;
+	}
+	return false;
+}
 function convertDuration( lstDuration){
 	var lstStartDate = lstDuration[0].split(" ");
 	var lstEndDate = lstDuration[1].split(" ");
@@ -30,7 +38,12 @@ var interval = setInterval(function(){
 			});
 			// Location => must be changed to country and get timezone
 			chrome.storage.sync.get('strLocation', function(data) {
-				objProfile.strLocation = data.strLocation.trim();
+				var location = data.strLocation.trim();
+				var lstLocation = location.split(",");
+				objProfile.strLocation = lstLocation[lstLocation.length - 1].trim();
+				if( isUSState(objProfile.strLocation)){
+					objProfile.strLocation = "United States";
+				}
 				$("input[name=country]").val(objProfile.strLocation);
 				processed.location = true;
 			});
