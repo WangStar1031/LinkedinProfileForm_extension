@@ -167,6 +167,10 @@ var interval = setInterval(function(){
 					var strBio = "";
 					var fullName = objProfile.firstName + " " + objProfile.lastName;
 					var prevCount = false;
+					var isCurrentJob = false;
+					if( objProfile.strExperience.length == 0){
+						strBio += fullName + " is currently in-between jobs.";
+					}
 					for( var i = 0; i < objProfile.strExperience.length; i++){
 						var curExp = objProfile.strExperience[i];
 						// if( curExp.workingHistory.length == 1){
@@ -174,8 +178,12 @@ var interval = setInterval(function(){
 							var strDuration = curWorking.duration;
 							var lstDuration = strDuration.split(" - ");
 							if( curWorking.duration.indexOf("Present") != -1){
+								isCurrentJob = true;
 								strBio += fullName + " is currently employed at " + curExp.companyName + ", since " + lstDuration[0] + ", holding  the title of " + curWorking.title + ".";
 							} else{
+								if( isCurrentJob == false){
+									strBio += fullName + " is currently in-between jobs.";
+								}
 								prevCount = !prevCount;
 								if( prevCount ){
 									strBio += " Previously, ";

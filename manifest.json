@@ -1,5 +1,5 @@
 {
-	"name": "Leadswami Extension",
+	"name": "Linkedin Form Extension",
 	"version": "1.0",
 	"description": "Scrap profiles in linkedin!",
 	"permissions": ["activeTab","declarativeContent","storage"],
