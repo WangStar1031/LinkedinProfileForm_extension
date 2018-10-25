@@ -22,42 +22,50 @@ else {
 		strLocation = LocationCtrl.innerHTML;
 	}
 	chrome.storage.sync.set({strLocation: strLocation});
-
-	var expMoreButton = $("#experience-section").find("button");
-	if( expMoreButton.length && $("#experience-section").find("button").attr("aria-expanded") == "false"){
-		expMoreButton.click();
+	var isExperienceScrapped = false;
+	var expMoreButton = $("#experience-section").find("button.pv-profile-section__see-more-inline");
+	if( expMoreButton.length && $("#experience-section").find("button.pv-profile-section__see-more-inline").attr("aria-expanded") == "false"){
+		// expMoreButton.click();
 		var expInt = setInterval(function(){
-			if( $("#experience-section").find("button").attr("aria-expanded") == "true"){
+			if( $("#experience-section").find("button.pv-profile-section__see-more-inline").length != 0){
+				console.log("clicked");
+				expMoreButton.click();
+			} else{
 				clearInterval(expInt);
-				var expLis = $("#experience-section").find("ul div li.pv-profile-section");
-				var lstExperience = [];
-				for( var i = 0; i < expLis.length; i++){
-					var curExp = {}
-					var curLi = expLis.eq(i);
-					var curSummaryInfo = curLi.find(".pv-entity__summary-info");
-					if( curSummaryInfo.length){
-						curExp.companyName = curSummaryInfo.find("h4 span.pv-entity__secondary-title").eq(0).text();
-						curExp.workingHistory = [{title:curSummaryInfo.find("h3").eq(0).text(), duration: curSummaryInfo.find("div h4.pv-entity__date-range span").eq(1).text()}];
-						lstExperience.push(curExp);
-					} else{
-						var companyInfo = curLi.find(".pv-entity__company-summary-info");
-						curExp.companyName = companyInfo.find("h3 span").eq(1).text();
-						curExp.allDuration = companyInfo.find("h4 span").eq(1).text();
-						curExp.workingHistory = [];
-						var hisLis = curLi.find("ul.pv-entity__position-group li");
-						for( var j = 0; j < hisLis.length; j++){
-							var curHisLi = hisLis.eq(j);
-							var hisTitle = curHisLi.find("h3 span").eq(1).text();
-							var hisDuration = curHisLi.find(".display-flex h4 span").eq(1).text();
-							curExp.workingHistory.push({title: hisTitle, duration: hisDuration});
+				console.log("full expanded.");
+				setTimeout(function(){
+					var expLis = $("#experience-section").find("ul div li.pv-profile-section");
+					var lstExperience = [];
+					for( var i = 0; i < expLis.length; i++){
+						var curExp = {}
+						var curLi = expLis.eq(i);
+						var curSummaryInfo = curLi.find(".pv-entity__summary-info");
+						if( curSummaryInfo.length){
+							curExp.companyName = curSummaryInfo.find("h4 span.pv-entity__secondary-title").eq(0).text();
+							curExp.workingHistory = [{title:curSummaryInfo.find("h3").eq(0).text(), duration: curSummaryInfo.find("div h4.pv-entity__date-range span").eq(1).text()}];
+							lstExperience.push(curExp);
+						} else{
+							var companyInfo = curLi.find(".pv-entity__company-summary-info");
+							curExp.companyName = companyInfo.find("h3 span").eq(1).text();
+							curExp.allDuration = companyInfo.find("h4 span").eq(1).text();
+							curExp.workingHistory = [];
+							var hisLis = curLi.find("ul.pv-entity__position-group li");
+							for( var j = 0; j < hisLis.length; j++){
+								var curHisLi = hisLis.eq(j);
+								var hisTitle = curHisLi.find("h3 span").eq(1).text();
+								var hisDuration = curHisLi.find(".display-flex h4 span").eq(1).text();
+								curExp.workingHistory.push({title: hisTitle, duration: hisDuration});
+							}
+							lstExperience.push(curExp);
 						}
-						lstExperience.push(curExp);
 					}
-				}
-				var strExperience = JSON.stringify(lstExperience);
-				chrome.storage.sync.set({strExperience:strExperience});
+					var strExperience = JSON.stringify(lstExperience);
+					chrome.storage.sync.set({strExperience:strExperience});
+					isExperienceScrapped = true;
+					console.log("Experience scrapping finished.");
+				}, 100);
 			}
-		}, 50);
+		}, 1000);
 	} else{
 		var expLis = $("#experience-section").find("ul div li.pv-profile-section");
 		var lstExperience = [];
@@ -86,6 +94,7 @@ else {
 		}
 		var strExperience = JSON.stringify(lstExperience);
 		chrome.storage.sync.set({strExperience: strExperience});
+		isExperienceScrapped = true;
 	}
 	var eduMoreButton = $("#education-section").find("button");
 	if( eduMoreButton.length && $("#education-section").find("button").attr("aria-expanded") == "false"){
@@ -186,6 +195,13 @@ else {
 		chrome.storage.sync.set({strSite: strSite});
 
 		document.getElementsByClassName("artdeco-dismiss")[0].click();
-		chrome.storage.sync.set({strDone: "finished"});
+		
 	}, 50);
+	var myFinalInt = setInterval( function(){
+		// console.log("isExperienceScrapped : " + isExperienceScrapped);
+		if( isExperienceScrapped == true){
+			clearInterval(myFinalInt);
+			chrome.storage.sync.set({strDone: "finished"});
+		}
+	}, 200);
 }
