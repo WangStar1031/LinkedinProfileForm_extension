@@ -29,6 +29,10 @@
     max-width: 600px;
     width: 100vh;
   }
+  #validate{
+    color: red;
+    font-size: 1.3em;
+  }
   table, input, select, textarea{
     width: 100%;
   }
@@ -93,6 +97,7 @@
     </div>
     <div class="mainProfile">
       <div>
+        <p id="validate" class="hiddenItem">Please fill out the mandatory fields.</p>
         <table class="table_1">
           <tr>
             <td class="mandatoryTitle">Prefix</td>
@@ -102,7 +107,7 @@
           </tr>
           <tr class="row_1">
             <td>
-              <select>
+              <select id="Prefix">
                 <option>Mr.</option>
                 <option>Ms.</option>
                 <option>Dr.</option>
@@ -122,12 +127,12 @@
         <table class="table_2">
           <tr>
             <td class="mandatoryTitle">Country</td>
-            <td>Email address</td>
+            <td class="mandatoryTitle">Email address</td>
             <td>Mobile Number</td>
           </tr>
           <tr class="row_2">
             <td><input type="text" name="country"></td>
-            <td><input type="text" name="email"></td>
+            <td><input type="text" id="strEmail" name="strEmail"></td>
             <td><input type="text" name="mobileNumber"></td>
           </tr>
         </table>
@@ -138,7 +143,7 @@
           </tr>
           <tr class="row_3">
             <td>
-              <input list="browsers" name="practiceArea">
+              <input list="browsers" name="practiceArea" id="industry">
               <datalist id="browsers">
                 <option value="Healthcare & Biomedical"></option>
                 <option value="Tech, Media & Telecom"></option>
@@ -169,7 +174,7 @@
             <td>Job Function</td>
           </tr>
           <tr>
-            <td><input type="text" name="jobFunction"></td>
+            <td><input type="text" id="jobsFunction" name="jobFunction"></td>
           </tr>
         </table>
         <table class="table_4">
@@ -195,7 +200,7 @@
               <td>English Biography</td>
             </tr>
             <tr>
-              <td><textarea name="englishBiography" rows="7"></textarea></td>
+              <td><textarea name="englishBiography" id="biography" rows="7"></textarea></td>
             </tr>
           </table>
         </div>
