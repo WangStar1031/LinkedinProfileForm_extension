@@ -1,5 +1,5 @@
-var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
-// var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
+// var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
+var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
 
 var mainEmail = "";
 function process(){
@@ -24,6 +24,8 @@ function process(){
 		return false;
 	}
 	function convertDuration( lstDuration){
+		console.log(lstDuration);
+		if( lstDuration.length < 2)return "";
 		var lstStartDate = lstDuration[0].split(" ");
 		var lstEndDate = lstDuration[1].split(" ");
 		var duration = ( lstEndDate[1] - lstStartDate[1] ) * 12 + ( monthName.indexOf(lstEndDate[0]) - monthName.indexOf(lstStartDate[0]));
@@ -213,7 +215,9 @@ function process(){
 									// console.log(prevCount );
 									// console.log( strBio);
 									strBio += objProfile.firstName + " held the position of " + curWorking.title + ", while working at " + curExp.companyName + ".";
-									strBio += " " + objProfile.firstName + " held this role for " + convertDuration(lstDuration) + "(" + strDuration + ")."
+									if( lstDuration != ""){
+										strBio += " " + objProfile.firstName + " held this role for " + convertDuration(lstDuration) + "(" + strDuration + ")."
+									}
 								}
 							// } else{
 
@@ -298,7 +302,7 @@ function process(){
 			$(".sendingWait").removeClass("hiddenItem");
 			$.post(serverUrl,{case:"profiles",email: email,data: strProfile}, function (data){
 				$(".sendingWait").addClass("hiddenItem");
-				// console.log( data);
+				console.log( data);
 			});
 		}
 	}
