@@ -302,7 +302,13 @@ function process(){
 			$(".sendingWait").removeClass("hiddenItem");
 			$.post(serverUrl,{case:"profiles",email: email,data: strProfile}, function (data){
 				$(".sendingWait").addClass("hiddenItem");
-				console.log( data);
+				if( data == "Inserted."){
+					$(".sentOK").removeClass("hiddenItem");
+					setTimeout( function(){ $(".sentOK").addClass("hiddenItem");}, 3000);
+				} else{
+					$(".sentCancel").removeClass("hiddenItem");
+					setTimeout( function(){ $(".sentCancel").addClass("hiddenItem");}, 3000);
+				}
 			});
 		}
 	}

@@ -63,7 +63,12 @@
   .mandatoryTitle:after{
     content: "  *";
   }
-
+  .sentOK, .sentCancel{
+    float: right;
+    width: 20px;
+    height: 20px !important;
+    padding: 20px;
+  }
 </style>
 <div class="contents">
   <div class="login">
@@ -94,6 +99,8 @@
       <button id="btnLogout">Logout</button>
       <button id="btnSend">Send</button>
       <img class="hiddenItem sendingWait" src="images/Loading_icon.gif">
+      <img class="hiddenItem sentOK" src="images/checked.png">
+      <img class="hiddenItem sentCancel" src="images/unchecked.png">
     </div>
     <div class="mainProfile">
       <div>

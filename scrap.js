@@ -96,6 +96,7 @@ else {
 		chrome.storage.sync.set({strExperience: strExperience});
 		isExperienceScrapped = true;
 	}
+	var isEducationScrapped = false;
 	var eduMoreButton = $("#education-section").find("button");
 	if( eduMoreButton.length && $("#education-section").find("button").attr("aria-expanded") == "false"){
 		eduMoreButton.click();
@@ -116,6 +117,7 @@ else {
 				}
 				var strEducation = JSON.stringify(lstEducation);
 				chrome.storage.sync.set({strEducation:strEducation});
+				isEducationScrapped = true;
 			}
 		}, 50);
 	} else{
@@ -133,6 +135,7 @@ else {
 		}
 		var strEducation = JSON.stringify(lstEducation);
 		chrome.storage.sync.set({strEducation: strEducation});
+		isEducationScrapped = true;
 	}
 
 	var strImgStyle = $(".pv-top-card-section__photo").attr("style");
@@ -157,7 +160,13 @@ else {
 	} else{
 		otherInfo.click();
 	}
-	document.getElementsByClassName("pv-top-card-v2-section__link--contact-info")[0].click();
+	var isProfileScrapped = false;
+	var profileInt = setInterval(function(){
+		if( isExperienceScrapped == true && isEducationScrapped == true ){
+			document.getElementsByClassName("pv-top-card-v2-section__link--contact-info")[0].click();
+			clearInterval(profileInt);
+		}
+	})
 
 	var myInt = setInterval(function(){
 		if( !document.getElementsByClassName("ci-vanity-url")[0])
@@ -195,11 +204,12 @@ else {
 		chrome.storage.sync.set({strSite: strSite});
 
 		document.getElementsByClassName("artdeco-dismiss")[0].click();
+		isProfileScrapped = true;
 		
 	}, 50);
 	var myFinalInt = setInterval( function(){
 		// console.log("isExperienceScrapped : " + isExperienceScrapped);
-		if( isExperienceScrapped == true){
+		if( isExperienceScrapped == true && isEducationScrapped == true && isProfileScrapped == true){
 			clearInterval(myFinalInt);
 			chrome.storage.sync.set({strDone: "finished"});
 		}
