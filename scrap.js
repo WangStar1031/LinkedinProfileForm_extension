@@ -121,7 +121,7 @@ else {
 			}
 		}, 50);
 	} else{
-		var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
+		var eduLis = $("#education-section").find("ul li.pv-education-entity");
 		var lstEducation = [];
 		for( var i = 0; i < eduLis.length; i++){
 			var curEdu = {}
@@ -166,7 +166,7 @@ else {
 			document.getElementsByClassName("pv-top-card-v2-section__link--contact-info")[0].click();
 			clearInterval(profileInt);
 		}
-	})
+	}, 100);
 
 	var myInt = setInterval(function(){
 		if( !document.getElementsByClassName("ci-vanity-url")[0])
