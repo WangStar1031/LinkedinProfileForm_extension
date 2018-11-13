@@ -99,29 +99,34 @@ else {
 	var isEducationScrapped = false;
 	var eduMoreButton = $("#education-section").find("button");
 	if( eduMoreButton.length && $("#education-section").find("button").attr("aria-expanded") == "false"){
-		eduMoreButton.click();
 		var eduInt = setInterval(function(){
-			if( $("#education-section").find("button").attr("aria-expanded") == "true"){
+			if( $("#education-section").find("button.pv-profile-section__see-more-inline").attr("aria-expanded") == "false"){
+				eduMoreButton.click();
+			} else{
 				clearInterval(eduInt);
-				var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
-				var lstEducation = [];
-				for( var i = 0; i < eduLis.length; i++){
-					var curEdu = {}
-					var curLi = eduLis.eq(i);
-					var curSummaryInfo = curLi.find(".pv-entity__summary-info");
-					curEdu.schoolName = curSummaryInfo.find("h3.pv-entity__school-name").eq(0).text();
-					curEdu.degreeName = curSummaryInfo.find("p.pv-entity__degree-name span").eq(1).text();
-					curEdu.areaName = curSummaryInfo.find("p.pv-entity__fos span").eq(1).text();
-					curEdu.duration = curSummaryInfo.find("p.pv-entity__dates span").eq(1).text().trim();
-					lstEducation.push(curEdu);
-				}
-				var strEducation = JSON.stringify(lstEducation);
-				chrome.storage.sync.set({strEducation:strEducation});
-				isEducationScrapped = true;
+				console.log("edu full expanded.");
+				setTimeout(function(){
+					var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
+					var lstEducation = [];
+					for( var i = 0; i < eduLis.length; i++){
+						var curEdu = {}
+						var curLi = eduLis.eq(i);
+						var curSummaryInfo = curLi.find(".pv-entity__summary-info");
+						curEdu.schoolName = curSummaryInfo.find("h3.pv-entity__school-name").eq(0).text();
+						curEdu.degreeName = curSummaryInfo.find("p.pv-entity__degree-name span").eq(1).text();
+						curEdu.areaName = curSummaryInfo.find("p.pv-entity__fos span").eq(1).text();
+						curEdu.duration = curSummaryInfo.find("p.pv-entity__dates span").eq(1).text().trim();
+						lstEducation.push(curEdu);
+					}
+					var strEducation = JSON.stringify(lstEducation);
+					chrome.storage.sync.set({strEducation:strEducation});
+					isEducationScrapped = true;
+					console.log("Education scrapping finished");
+				}, 100);
 			}
-		}, 50);
+		}, 1000);
 	} else{
-		var eduLis = $("#education-section").find("ul li.pv-education-entity");
+		var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
 		var lstEducation = [];
 		for( var i = 0; i < eduLis.length; i++){
 			var curEdu = {}
