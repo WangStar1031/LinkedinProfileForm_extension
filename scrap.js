@@ -106,7 +106,7 @@ else {
 				clearInterval(eduInt);
 				console.log("edu full expanded.");
 				setTimeout(function(){
-					var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
+					var eduLis = $("#education-section").find("ul li");
 					var lstEducation = [];
 					for( var i = 0; i < eduLis.length; i++){
 						var curEdu = {}
@@ -126,7 +126,7 @@ else {
 			}
 		}, 1000);
 	} else{
-		var eduLis = $("#education-section").find("ul li.pv-profile-section__section-info-item");
+		var eduLis = $("#education-section").find("ul li");
 		var lstEducation = [];
 		for( var i = 0; i < eduLis.length; i++){
 			var curEdu = {}
