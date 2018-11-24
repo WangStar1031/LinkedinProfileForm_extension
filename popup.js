@@ -1,5 +1,5 @@
-// var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
-var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
+var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
+// var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
 
 var mainEmail = "";
 function process(){
@@ -264,10 +264,10 @@ function process(){
 			console.log("strLocation");
 			return false;
 		}
-		if( !objProfile.strEmail){
-			console.log("strEmail");
-			return false;
-		}
+		// if( !objProfile.strEmail){
+		// 	console.log("strEmail");
+		// 	return false;
+		// }
 		if( !objProfile.industry){
 			console.log("industry");
 			return false;

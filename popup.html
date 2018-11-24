@@ -28,6 +28,7 @@
   .contents, .login{
     max-width: 600px;
     width: 100vh;
+    overflow: auto;
   }
   #validate{
     color: red;
@@ -65,7 +66,7 @@
   }
   .sentOK, .sentCancel{
     float: right;
-    width: 20px;
+    /*width: 20px;*/
     height: 20px !important;
     padding: 20px;
   }
@@ -99,8 +100,10 @@
       <button id="btnLogout">Logout</button>
       <button id="btnSend">Send</button>
       <img class="hiddenItem sendingWait" src="images/Loading_icon.gif">
-      <img class="hiddenItem sentOK" src="images/checked.png">
-      <img class="hiddenItem sentCancel" src="images/unchecked.png">
+      <!-- <img class="hiddenItem sentOK" src="images/checked.png"> -->
+      <span class="hiddenItem sentOK" style="color: green;">Profile Sent</span>
+      <span class="hiddenItem sentCancel" style="color: red;">* Duplicate Entry *</span>
+      <!-- <img class="hiddenItem sentCancel" src="images/unchecked.png"> -->
     </div>
     <div class="mainProfile">
       <div>
