@@ -1,18 +1,14 @@
 {
-	"name": "Linkedin Form Extension",
+	"name": "Linkedin Profile Form Extension",
 	"version": "1.1",
-	"description": "Linkedin Form",
+	"description": "Linkedin Profile Form",
 	"permissions": [
 		"activeTab",
 		"browsingData",
 		"storage",
 		"https://*.linkedin.com/*"
 	],
-	"background":{
-		"scripts": ["background.js"],
-		"persistent": false
-	},
-	"page_action": {
+	"browser_action": {
 		"default_popup": "popup.html",
 		"default_icon": {
 			"128": "images/get_started128.png"
