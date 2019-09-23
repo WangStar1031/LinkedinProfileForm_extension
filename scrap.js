@@ -57,7 +57,7 @@ else {
 						var curLi = expLis.eq(i);
 						var curSummaryInfo = curLi.find(".pv-entity__summary-info");
 						if( curSummaryInfo.length){
-							curExp.companyName = curSummaryInfo.find("h4 span.pv-entity__secondary-title").eq(0).text();
+							curExp.companyName = curSummaryInfo.find("p.pv-entity__secondary-title").eq(0).text();
 							curExp.workingHistory = [{title:curSummaryInfo.find("h3").eq(0).text(), duration: curSummaryInfo.find("div h4.pv-entity__date-range span").eq(1).text()}];
 							lstExperience.push(curExp);
 						} else{
@@ -91,7 +91,7 @@ else {
 			var curLi = expLis.eq(i);
 			var curSummaryInfo = curLi.find(".pv-entity__summary-info");
 			if( curSummaryInfo.length){
-				curExp.companyName = curSummaryInfo.find("h4 span.pv-entity__secondary-title").eq(0).text();
+				curExp.companyName = curSummaryInfo.find("p.pv-entity__secondary-title").eq(0).text();
 				curExp.workingHistory = [{title:curSummaryInfo.find("h3").eq(0).text(), duration: curSummaryInfo.find("div h4.pv-entity__date-range span").eq(1).text()}];
 				lstExperience.push(curExp);
 			} else{

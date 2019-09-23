@@ -1,5 +1,5 @@
-// var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
-var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
+var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
+// var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
 
 var mainEmail = "";
 function process(){
@@ -27,7 +27,13 @@ function process(){
 		console.log(lstDuration);
 		if( lstDuration.length < 2)return "";
 		var lstStartDate = lstDuration[0].split(" ");
+		if( lstStartDate.length == 1){
+			lstStartDate = ["Jan", lstStartDate[0]];
+		}
 		var lstEndDate = lstDuration[1].split(" ");
+		if( lstEndDate.length == 1){
+			lstEndDate = ["Jan", lstEndDate[0]];
+		}
 		var duration = ( lstEndDate[1] - lstStartDate[1] ) * 12 + ( monthName.indexOf(lstEndDate[0]) - monthName.indexOf(lstStartDate[0]));
 		return duration + "months";
 	}
@@ -297,7 +303,7 @@ function process(){
 		$("#validate").addClass("hiddenItem");
 		var strProfile = JSON.stringify(objProfile);
 
-		// console.log( strProfile);
+		console.log( strProfile);
 		if( email != ""){
 			$(".sendingWait").removeClass("hiddenItem");
 			$.post(serverUrl,{case:"profiles",email: email,data: strProfile}, function (data){
