@@ -1,5 +1,6 @@
 // var serverUrl = "http://localhost/linkedinForm/api_getProfiles.php";
-var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
+var serverUrl = "http://nodescorp.com/linkedinForm/api_getProfiles.php";
+// var serverUrl = "http://18.188.148.74/linkedinForm/api_getProfiles.php";
 
 var mainEmail = "";
 function process(){
