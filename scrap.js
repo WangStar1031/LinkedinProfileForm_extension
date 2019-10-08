@@ -50,7 +50,8 @@ else {
 				clearInterval(expInt);
 				console.log("full expanded.");
 				setTimeout(function(){
-					var expLis = $("#experience-section").find("ul div li.pv-profile-section");
+					debugger;
+					var expLis = $("#experience-section").find("ul li");
 					var lstExperience = [];
 					for( var i = 0; i < expLis.length; i++){
 						var curExp = {}
@@ -84,7 +85,7 @@ else {
 			}
 		}, 1000);
 	} else{
-		var expLis = $("#experience-section").find("ul div li.pv-profile-section");
+		var expLis = $("#experience-section").find("ul li");
 		var lstExperience = [];
 		for( var i = 0; i < expLis.length; i++){
 			var curExp = {}
