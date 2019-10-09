@@ -51,7 +51,7 @@ else {
 				console.log("full expanded.");
 				setTimeout(function(){
 					debugger;
-					var expLis = $("#experience-section").find("ul li");
+					var expLis = $("#experience-section").find("> ul > li");
 					var lstExperience = [];
 					for( var i = 0; i < expLis.length; i++){
 						var curExp = {}
@@ -85,7 +85,7 @@ else {
 			}
 		}, 1000);
 	} else{
-		var expLis = $("#experience-section").find("ul li");
+		var expLis = $("#experience-section").find("> ul > li");
 		var lstExperience = [];
 		for( var i = 0; i < expLis.length; i++){
 			var curExp = {}
